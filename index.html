@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lula - O Líder do Povo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --communist-red: #cc0000;
+            --communist-yellow: #ffcc00;
+            --dark-red: #990000;
+            --light-red: #ff6666;
+            --pt-red: #ff0000;
+            --dark-gray: #333333;
+            --light-gray: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Roboto', 'Arial', sans-serif;
+            background-color: #fff;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #181818;
+                color: #f0f0f0;
+            }
+            
+            .bg-light {
+                background-color: #252525 !important;
+                color: #f0f0f0;
+            }
+            
+            .card {
+                background-color: #252525;
+                color: #f0f0f0;
+            }
+            
+            .border {
+                border-color: #444 !important;
+            }
+        }
+        
+        .hero {
+            background-color: var(--communist-red);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M14.83,4.89l1.34.75-1.34.75,1.34.75-1.34.75L16,8.63,14.83,9.37l1.34.75-1.34.75,1.34.75-1.34.75L16,13.11l-1.17.75,1.34.75-1.34.75,1.34.75-1.34.75,1.34.75-1.34.75,2.91-1.64-2.91-1.64,2.91-1.64-2.91-1.64,2.91-1.64-2.91-1.64L16,7.26l-2.91-1.64L16,3.98,14.83,4.89Zm0,0,1.34.75-1.34.75,1.34.75-1.34.75L16,7.74,14.83,8.48l1.34.75-1.34.75,1.34.75-1.34.75L16,12.22l-1.17.75,1.34.75-1.34.75,1.34.75-1.34.75,1.34.75-1.34.75,2.91-1.64L16,13.11l1.34.75-1.34.75,1.34.75-1.34.75,1.34.75-1.34.75,2.91-1.64-2.91-1.64,2.91-1.64-2.91-1.64,2.91-1.64-2.91-1.64Z'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .bg-hammer-sickle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url('https://static.significados.com.br/foto/500px-hammer-and-sickle.svg.png?width=1024') no-repeat center center;
+            background-size: 80% auto;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .star-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .star {
+            color: var(--communist-yellow);
+            font-size: 1.6rem;
+            margin: 0 5px;
+        }
+        
+        .slogan {
+            font-style: italic;
+            color: var(--communist-yellow);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--communist-yellow);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* L Gesture Animation */
+        .l-button {
+            background: linear-gradient(45deg, var(--communist-red), var(--dark-red));
+            color: var(--communist-yellow);
+            border: 2px solid var(--communist-yellow);
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            z-index: 1;
+        }
+        
+        .l-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .l-button:active {
+            transform: translateY(1px);
+        }
+        
+        .l-gesture {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffcc00' d='M70,10 L70,70 L30,70 L30,40 C30,20 50,10 70,10 Z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            z-index: 100;
+        }
+        
+        @keyframes l-float {
+            0% {
+                transform: translate(0, 0) scale(0.3) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--rotation));
+                opacity: 0;
+            }
+        }
+        
+        /* Rest of the styles remain the same */
+        .section-title {
+            position: relative;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--communist-red), var(--communist-yellow));
+        }
+        
+        .section-subtitle {
+            font-style: italic;
+            color: var(--communist-red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .achievement-card {
+            border-top: 4px solid var(--communist-red);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--communist-red);
+            margin-bottom: 1rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--dark-red);
+            border-left: 4px solid var(--communist-red);
+            padding-left: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .quote-author {
+            font-weight: 700;
+            color: var(--communist-red);
+            text-align: right;
+            display: block;
+            margin-top: 1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--communist-red);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-container.left {
+            left: 0;
+        }
+        
+        .timeline-container.right {
+            left: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--communist-red);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-container.right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .timeline-content {
+                background-color: #252525;
+            }
+            
+            .timeline-container::after {
+                background-color: #252525;
+            }
+        }
+        
+        .timeline-content h3 {
+            color: var(--communist-red);
+            margin-top: 0;
+        }
+        
+        .stats-card {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .stats-card {
+                background-color: #252525;
+            }
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--communist-red);
+            margin-bottom: 0.5rem;
+        }
+        
+        .call-to-action {
+            background: linear-gradient(45deg, var(--communist-red), var(--dark-red));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .call-to-action h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .call-to-action-btn {
+            background-color: var(--communist-yellow);
+            color: var(--dark-gray);
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .call-to-action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: var(--dark-gray);
+        }
+        
+        .policy-container {
+            position: relative;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--communist-red);
+            transition: transform 0.3s ease;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .policy-container {
+                background-color: #252525;
+            }
+        }
+        
+        .policy-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .policy-icon {
+            font-size: 2rem;
+            color: var(--communist-red);
+            margin-bottom: 1rem;
+        }
+        
+        .policy-title {
+            color: var(--communist-red);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .red-bg {
+            background-color: var(--communist-red);
+            color: white;
+        }
+        
+        .yellow-accent {
+            color: var(--communist-yellow);
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--communist-yellow);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            font-size: 1.5rem;
+        }
+        
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--communist-yellow);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* PT Logo Styles */
+        .pt-star {
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .pt-logo {
+            background-color: var(--pt-red);
+            color: white;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+        }
+        
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hammer and Sickle Styling */
+        .symbol {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            position: relative;
+        }
+        
+        .hammer-sickle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cpath fill='%23ffcc00' d='M185.9 174.5c0 0 16.8-2.7 43.7-6.5 19.6-2.8 9.8-13.7-4-15.8 -13.8-2.1-39.4-4.8-54-10.8 -14.6-6-24-15.4-20.1-18.1 3.8-2.7-15.9-2.4-23.4 10.3 -7.5 12.7-13.9 22.4-13.9 22.4s8.7-15.1 1.7-12.2c-7 2.9-18.8 19.3-26.9 32.3 -8.1 13.1 3.3 29.1 13.5 24.3 10.2-4.8 14.8-17.1 14.8-17.1 7.9 9.1 11.9 17.3 11.9 17.3 -16 22.4-3 38.1 14.2 35.8 17.2-2.2 48-31.3 48-31.3s-11.9 28.3 8.1 30.5c20 2.2 28.9-17.7 28.9-17.7 -15.2 0.7-26.5-18.4-41.5-43.4z'/%3E%3Cpath fill='%23ffcc00' d='M97.9 125l8.3-20.7c3.6-9 10.3-15 23.3-16.5l31.3-3.5c5.3-0.7 9.2-4.6 9.2-9.2v-5c0-4.6-5.3-6.9-9.9-4.9l-22.4 9.9c-3.7 1.6-5.2 6.1-3.3 9.6l4.4 7.5c1.3 2.3 0.1 5.3-2.5 6.1l-109.2 33.3c-3.8 1.2-6.5 4.8-6.5 8.8v6.3c0 5.5 5.8 9.2 10.9 7.1l66.4-28.8z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        /* Brazilian flag colors */
+        .brazilian-accent {
+            background: linear-gradient(135deg, #009c3b 25%, #ffdf00 25%, #ffdf00 50%, #002776 50%, #002776 75%, #009c3b 75%);
+            height: 6px;
+            width: 100%;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container.right {
+                left: 0%;
+            }
+            
+            .timeline-container.left::after, .timeline-container.right::after {
+                left: 18px;
+            }
+            
+            .hero {
+                background-size: cover;
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="bg-hammer-sickle"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center hero-content">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzfsWlb3T3hkoMGykEI0XMxGyMm08wPYTDVA&s" alt="Presidente Lula" class="profile-img">
+                    
+                    <div class="star-container">
+                        <i class="bi bi-star-fill star"></i>
+                        <i class="bi bi-star-fill star"></i>
+                        <i class="bi bi-star-fill star"></i>
+                        <i class="bi bi-star-fill star"></i>
+                        <i class="bi bi-star-fill star"></i>
+                    </div>
+                    
+                    <p class="slogan">❝ Aqui o povo come só feijão puro ❞</p>
+                    
+                    <div class="pt-logo mb-3 d-inline-flex">PT</div>
+                    
+                    <h1 class="display-4 fw-bold mb-3">Presidente Lula</h1>
+                    <p class="lead mb-4">Líder do povo, voz dos trabalhadores, e símbolo da luta por justiça social no Brasil</p>
+                    
+                    <div style="width: 150px; height: 150px; margin: 0 auto 1.5rem;" class="d-flex align-items-center justify-content-center">
+                        <img src="https://static.significados.com.br/foto/500px-hammer-and-sickle.svg.png?width=1024" alt="Foice e Martelo" style="width: 100%; height: auto;">
+                    </div>
+                    
+                    <button id="l-button" class="l-button">
+                        <i class="bi bi-hand-index-thumb me-2"></i> FAZ O L
+                    </button>
+                    
+                    <div class="mt-4">
+                        <a href="#saiba-mais" class="btn btn-light btn-lg px-4 py-2">Conheça a Revolução</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" id="saiba-mais">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h2 class="section-title">O Campeão dos Trabalhadores</h2>
+                    <p class="section-subtitle">"A esperança venceu o medo"</p>
+                    <p>Luiz Inácio Lula da Silva, conhecido carinhosamente como Lula, representa a luta contra a opressão capitalista e a esperança para milhões de brasileiros. Filho da classe trabalhadora, ex-metalúrgico e sindicalista, Lula transformou sua experiência de vida em uma poderosa força política para combater a desigualdade social.</p>
+                    <p>Como fundador do Partido dos Trabalhadores (PT), Lula dedicou sua vida a defender os direitos dos trabalhadores, promover políticas de redistribuição de renda e lutar contra o imperialismo econômico que prejudica as nações em desenvolvimento.</p>
+                    <p>Sua visão de um Brasil mais justo e igualitário tem inspirado movimentos progressistas em toda a América Latina, mostrando que um futuro socialista é possível através da organização popular e da solidariedade internacional.</p>
+                    <div class="d-flex mt-4">
+                        <div class="pt-logo">PT</div>
+                        <div>
+                            <h5 class="mb-1">Partido dos Trabalhadores</h5>
+                            <p class="mb-0 text-muted">O partido do povo brasileiro</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in" style="transition-delay: 0.2s;">
+                    <div class="quote">
+                        "Não existe solução capitalista para a crise do capitalismo. A solução está na solidariedade, na cooperação, na fraternidade, no socialismo."
+                        <span class="quote-author">— Presidente Lula</span>
+                    </div>
+                    <div class="quote">
+                        "A classe trabalhadora não pode pagar pela crise. Não fomos nós que a criamos."
+                        <span class="quote-author">— Presidente Lula</span>
+                    </div>
+                    <div class="quote">
+                        "Um país não muda pela sua economia, um país muda pela educação do seu povo."
+                        <span class="quote-author">— Presidente Lula</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brazilian Accent Divider -->
+    <div class="brazilian-accent"></div>
+
+    <!-- Achievements Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mx-auto">Conquistas Revolucionárias</h2>
+            <p class="text-center mb-5">Durante seus governos, o camarada Lula implementou políticas revolucionárias que desafiaram o sistema capitalista opressor e elevaram o padrão de vida dos trabalhadores.</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 fade-in">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-currency-exchange achievement-icon"></i>
+                            <h3 class="h5 mb-3">Redistribuição de Renda</h3>
+                            <p>Programas como Bolsa Família retiraram milhões de brasileiros da extrema pobreza, promovendo justiça social e redistribuição da riqueza nacional.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 fade-in" style="transition-delay: 0.1s;">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-mortarboard-fill achievement-icon"></i>
+                            <h3 class="h5 mb-3">Educação para Todos</h3>
+                            <p>Criação de universidades públicas e programas como ProUni e FIES democratizaram o acesso ao ensino superior para filhos da classe trabalhadora.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 fade-in" style="transition-delay: 0.2s;">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-house-heart-fill achievement-icon"></i>
+                            <h3 class="h5 mb-3">Habitação Popular</h3>
+                            <p>O programa Minha Casa, Minha Vida proporcionou moradia digna a milhões de famílias trabalhadoras, combatendo o déficit habitacional.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 fade-in" style="transition-delay: 0.3s;">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-hospital-fill achievement-icon"></i>
+                            <h3 class="h5 mb-3">Saúde Universal</h3>
+                            <p>Fortalecimento do SUS, criação do Farmácia Popular e expansão das UPAs, garantindo acesso à saúde pública de qualidade para todos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-6 col-lg-3 fade-in" style="transition-delay: 0.4s;">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-people-fill achievement-icon"></i>
+                            <h3 class="h5 mb-3">Direitos Trabalhistas</h3>
+                            <p>Valorização do salário mínimo, fortalecimento dos sindicatos e ampliação dos direitos dos trabalhadores contra a exploração capitalista.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 fade-in" style="transition-delay: 0.5s;">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-globe-americas achievement-icon"></i>
+                            <h3 class="h5 mb-3">Independência Nacional</h3>
+                            <p>Reafirmação da soberania brasileira, resistência ao imperialismo e fortalecimento das relações Sul-Sul contra a hegemonia capitalista.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 fade-in" style="transition-delay: 0.6s;">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-currency-dollar achievement-icon"></i>
+                            <h3 class="h5 mb-3">Combate à Desigualdade</h3>
+                            <p>Taxação de grandes fortunas, combate aos privilégios da elite econômica e promoção de uma distribuição mais justa da riqueza nacional.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 fade-in" style="transition-delay: 0.7s;">
+                    <div class="achievement-card">
+                        <div class="card-body">
+                            <i class="bi bi-trophy-fill achievement-icon"></i>
+                            <h3 class="h5 mb-3">Reconhecimento Internacional</h3>
+                            <p>Transformação do Brasil em potência global respeitada, líder dos países emergentes e voz importante no combate ao capitalismo predatório.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mx-auto">O Impacto da Revolução</h2>
+            <p class="text-center mb-5">Números que demonstram o poder transformador das políticas socialistas do governo Lula na vida do povo brasileiro.</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4 fade-in">
+                    <div class="stats-card">
+                        <p class="stats-number">30+ milhões</p>
+                        <h3 class="h4">Pessoas saíram da pobreza</h3>
+                        <p>Através de políticas de redistribuição de renda e programas sociais, milhões de brasileiros conquistaram dignidade e melhores condições de vida.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 fade-in" style="transition-delay: 0.1s;">
+                    <div class="stats-card">
+                        <p class="stats-number">4 milhões</p>
+                        <h3 class="h4">Novas moradias populares</h3>
+                        <p>Trabalhadores brasileiros conquistaram o direito à moradia digna através dos programas habitacionais do governo dos trabalhadores.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 fade-in" style="transition-delay: 0.2s;">
+                    <div class="stats-card">
+                        <p class="stats-number">73,9%</p>
+                        <h3 class="h4">Aumento real do salário mínimo</h3>
+                        <p>Valorização histórica do salário dos trabalhadores, superando significativamente a inflação e aumentando o poder de compra do povo.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 fade-in" style="transition-delay: 0.3s;">
+                    <div class="stats-card">
+                        <p class="stats-number">18 novas</p>
+                        <h3 class="h4">Universidades federais</h3>
+                        <p>Democratização do ensino superior com a criação de novas instituições públicas e gratuitas em todo o território nacional.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 fade-in" style="transition-delay: 0.4s;">
+                    <div class="stats-card">
+                        <p class="stats-number">21 milhões</p>
+                        <h3 class="h4">Empregos formais criados</h3>
+                        <p>Geração massiva de postos de trabalho com carteira assinada e direitos garantidos, em oposição à precarização neoliberal.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 fade-in" style="transition-delay: 0.5s;">
+                    <div class="stats-card">
+                        <p class="stats-number">500%</p>
+                        <h3 class="h4">Aumento em reservas internacionais</h3>
+                        <p>Fortalecimento da soberania econômica brasileira e proteção contra crises do capitalismo global.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mx-auto">Programa Revolucionário</h2>
+            <p class="text-center mb-5">As principais políticas do projeto socialista para o Brasil, combatendo o capitalismo predatório e construindo uma sociedade justa.</p>
+            
+            <div class="row">
+                <div class="col-lg-6 fade-in">
+                    <div class="policy-container">
+                        <i class="bi bi-coin policy-icon"></i>
+                        <h3 class="policy-title">Taxação das Grandes Fortunas</h3>
+                        <p>Implementação de impostos progressivos sobre o grande capital e as fortunas da elite econômica, garantindo que os ricos paguem sua justa contribuição para o desenvolvimento nacional.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in" style="transition-delay: 0.1s;">
+                    <div class="policy-container">
+                        <i class="bi bi-bank2 policy-icon"></i>
+                        <h3 class="policy-title">Fortalecimento dos Bancos Públicos</h3>
+                        <p>Expansão do papel dos bancos estatais para democratizar o crédito, financiar o desenvolvimento social e reduzir a influência do capital financeiro especulativo na economia brasileira.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in" style="transition-delay: 0.2s;">
+                    <div class="policy-container">
+                        <i class="bi bi-gear-wide-connected policy-icon"></i>
+                        <h3 class="policy-title">Reindustrialização Nacional</h3>
+                        <p>Recuperação da indústria brasileira com forte participação estatal, investimentos em setores estratégicos e tecnologia, criando empregos de qualidade e reduzindo a dependência externa.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in" style="transition-delay: 0.3s;">
+                    <div class="policy-container">
+                        <i class="bi bi-tree-fill policy-icon"></i>
+                        <h3 class="policy-title">Reforma Agrária Popular</h3>
+                        <p>Distribuição de terras improdutivas aos trabalhadores rurais, apoio à agricultura familiar e combate ao latifúndio, garantindo segurança alimentar e desenvolvimento rural sustentável.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in" style="transition-delay: 0.4s;">
+                    <div class="policy-container">
+                        <i class="bi bi-megaphone-fill policy-icon"></i>
+                        <h3 class="policy-title">Democratização da Mídia</h3>
+                        <p>Combate aos monopólios de comunicação controlados pela elite capitalista, promovendo a pluralidade de vozes, o fortalecimento da mídia pública e o acesso popular aos meios de comunicação.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in" style="transition-delay: 0.5s;">
+                    <div class="policy-container">
+                        <i class="bi bi-shield-fill-check policy-icon"></i>
+                        <h3 class="policy-title">Soberania Nacional</h3>
+                        <p>Defesa intransigente dos recursos naturais brasileiros contra a exploração imperialista, nacionalização de setores estratégicos e desenvolvimento de uma política externa soberana e anti-imperialista.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mx-auto">A Jornada Revolucionária</h2>
+            <p class="text-center mb-5">A trajetória de luta do camarada Lula na construção de um Brasil socialista e justo para todos os trabalhadores.</p>
+            
+            <div class="timeline">
+                <div class="timeline-container left fade-in">
+                    <div class="timeline-content">
+                        <h3>1945</h3>
+                        <p>Nascimento de Luiz Inácio Lula da Silva em Garanhuns, Pernambuco, em uma família pobre do Nordeste brasileiro.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container right fade-in">
+                    <div class="timeline-content">
+                        <h3>1975-1981</h3>
+                        <p>Liderança nas históricas greves do ABC Paulista, desafiando a ditadura militar imposta pelo imperialismo americano e pelas elites locais.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container left fade-in">
+                    <div class="timeline-content">
+                        <h3>1980</h3>
+                        <p>Fundação do Partido dos Trabalhadores (PT), unindo forças progressistas na luta contra o capitalismo opressor e pela justiça social.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container right fade-in">
+                    <div class="timeline-content">
+                        <h3>2002</h3>
+                        <p>Vitória histórica nas eleições presidenciais, marcando a chegada de um autêntico representante da classe trabalhadora ao poder.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container left fade-in">
+                    <div class="timeline-content">
+                        <h3>2003-2010</h3>
+                        <p>Implementação de programas revolucionários que transformaram o Brasil, combatendo a fome, a miséria e a exploração capitalista.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container right fade-in">
+                    <div class="timeline-content">
+                        <h3>2018-2022</h3>
+                        <p>Resistência heróica à perseguição política e judicial orquestrada pelas elites e pelo imperialismo, tornando-se um símbolo da luta popular.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-container left fade-in">
+                    <div class="timeline-content">
+                        <h3>2022</h3>
+                        <p>Retorno triunfal à presidência, derrotando o projeto fascista e reacendendo a esperança de milhões de brasileiros por um futuro socialista.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="call-to-action">
+        <div class="container">
+            <div class="symbol mb-4">
+                <div class="hammer-sickle"></div>
+            </div>
+            <h2>Junte-se à Revolução!</h2>
+            <p class="lead mb-4">Participe da construção de um Brasil socialista, justo e soberano. A luta continua!</p>
+            <a href="#" class="call-to-action-btn">Filiar-se ao Partido</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="footer-title">Solidariedade Internacional</h3>
+                    <p>Unindo trabalhadores de todo o mundo na luta contra o capitalismo global e pela construção de uma sociedade justa e igualitária.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h3 class="footer-title">Movimento</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">História do Partido</a></li>
+                        <li><a href="#">Manifesto</a></li>
+                        <li><a href="#">Causas</a></li>
+                        <li><a href="#">Greves</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h3 class="footer-title">Ação</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Filiação</a></li>
+                        <li><a href="#">Doações</a></li>
+                        <li><a href="#">Voluntariado</a></li>
+                        <li><a href="#">Eventos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title">Boletim Revolucionário</h3>
+                    <p>Receba atualizações sobre a luta do povo e as conquistas da revolução brasileira.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Seu email">
+                            <button class="btn btn-danger" type="submit">Inscrever-se</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="brazilian-accent mt-4"></div>
+            <div class="text-center mt-4">
+                <div class="pt-logo d-inline-flex">PT</div>
+                <p class="mb-2">Partido dos Trabalhadores</p>
+                <p class="copyright">&copy; 2023 Solidariedade Revolucionária. Todos os direitos do povo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade-in animation for elements
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkFade() {
+                fadeElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+                    
+                    if (!(rect.bottom < 0 || rect.top - viewHeight >= 0)) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkFade();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkFade);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // "Faz o L" button effect
+            const lButton = document.getElementById('l-button');
+            
+            lButton.addEventListener('click', function(e) {
+                // Create multiple L gestures
+                const numGestures = 20;
+                
+                for (let i = 0; i < numGestures; i++) {
+                    createLGesture(e.clientX, e.clientY);
+                }
+                
+                // Button animation
+                this.classList.add('animate__animated', 'animate__rubberBand');
+                setTimeout(() => {
+                    this.classList.remove('animate__animated', 'animate__rubberBand');
+                }, 1000);
+            });
+            
+            function createLGesture(x, y) {
+                // Create L gesture element
+                const gesture = document.createElement('div');
+                gesture.className = 'l-gesture';
+                
+                // Random position adjustments
+                const buttonRect = lButton.getBoundingClientRect();
+                const centerX = buttonRect.left + buttonRect.width / 2;
+                const centerY = buttonRect.top + buttonRect.height / 2;
+                
+                // Set initial position at the button center
+                gesture.style.position = 'fixed';
+                gesture.style.left = `${centerX}px`;
+                gesture.style.top = `${centerY}px`;
+                
+                // Random size
+                const size = 30 + Math.random() * 40;
+                gesture.style.width = `${size}px`;
+                gesture.style.height = `${size}px`;
+                
+                // Random color - yellow or red
+                if (Math.random() > 0.5) {
+                    gesture.style.filter = 'hue-rotate(120deg)';
+                }
+                
+                // Random direction for animation
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 100 + Math.random() * 200;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                const rotation = -180 + Math.random() * 360;
+                
+                gesture.style.setProperty('--tx', `${tx}px`);
+                gesture.style.setProperty('--ty', `${ty}px`);
+                gesture.style.setProperty('--rotation', `${rotation}deg`);
+                
+                // Apply animation
+                const duration = 1 + Math.random() * 2;
+                gesture.style.animation = `l-float ${duration}s forwards`;
+                
+                // Add to document and remove after animation
+                document.body.appendChild(gesture);
+                
+                setTimeout(() => {
+                    gesture.remove();
+                }, duration * 1000);
+            }
+        });
+    </script>
+</body>
+</html>
